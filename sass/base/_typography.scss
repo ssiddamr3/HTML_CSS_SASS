@@ -1,0 +1,82 @@
+@import "sass/abstract/_variables.scss";
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color:$color-grey-dark;
+    
+}
+
+
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* behind the element is hidden, to avoid little shaking of the element */
+    margin-bottom: 6rem;
+
+
+    &--main{
+        display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 2.6rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* animation-timing-function: ease-out; ease-in, ease-in-out;
+
+    animation-delay: 3s;
+    animation-iteration-count: 3; */
+
+    @include respond(phone){
+        letter-spacing: 1rem;
+        font-family: 5rem; 
+    }
+
+    }
+
+    &--sub{
+        display: block;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 15px;
+        animation: moveInRight 1s ease-out;
+    }
+
+    @include respond(phone){
+        letter-spacing: .5rem;
+    }
+
+}
+
+.heading-secondary{
+    font-size: 3.5rem;
+    text-transform:uppercase;
+    font-weight: 700;
+    background-image: linear-gradient(to right,$color-primary-light,$color-primary-dark);
+    display: inline-block;
+    // The background sits on the texts, hence we can transparent the text color this way we can see the bg in the form of text.
+    -webkit-background-clip: text;
+    color:transparent;
+    letter-spacing: 2px; // Note: any point value gets rounded.
+    transition: all 2s;
+
+    &:hover{
+        transform: skewY(20deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba(black,.2);
+    }
+}
+
+.heading-tertiary{
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.paragraph{
+    font-size: 1.6rem;
+    
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+}

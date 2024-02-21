@@ -1,0 +1,63 @@
+.story{
+    width:75%;
+    margin:0 auto;
+    box-shadow: 0 3rem 6rem rgba(black,.1);
+    background-color: rgba(white,.6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &__shape{
+        width: 15rem;
+        height:15rem;
+        background-color: aqua;
+        float:left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        // first 50% is radius and the other other two define the center of the circle. The elmnt needs to be float, along with dims(h&w)
+        shape-outside: circle(50% at 50% 50%); 
+        position: relative;
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg); // when an element is set to float, dont mess with margins to move it use translateX or Y
+    }
+
+    &__img{
+        height: 100%;
+        transform:translateX(-4rem) scale(1.4rem);
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    &__text{
+        transform: skew(12deg);
+    }
+
+    &__caption{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50% ,20%);
+        color: white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        
+    }
+
+
+
+
+    &:hover &__caption{
+        opacity: 1;
+        transform:translate(-50%,-50%);
+    }
+// Note: two transforms will never happen on an element.
+
+&:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    filter:blur(3px) brightness(80%);  // above 100% image becomes brighter, below 100% the image becomes darker.
+}
+}

@@ -1,0 +1,57 @@
+*,
+// *::after,
+*::before{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+}
+
+html{
+    // This defines what 1rem should be.
+    font-size: 62.5%;
+
+
+    // @include respond-phone{
+    //     font-size: 50%;
+    // }
+
+    // @include respond(phone){
+    //     font-size: 50%;
+    // }
+
+    // @include respond(tab-land){
+    //     font-size: 56.25%;  // check how to calculate these 1rem = 8 px 8/16 = 50%
+    // }
+
+    // @include respond(tab-port){
+    //     font-size: 50%;
+    // }
+
+// Note: When two media queries are there put the smallest one in the end because it would get applied if both of them met with conditions.
+    // @include respond(big-desktop){
+    //     font-size: 75%;
+    // }
+
+}
+// Note: ems are the best choice for media queries, because rems might not work some times and also the default which we set here is of,
+// no use, because the media queries take the font size directly from the browser. 1em = 16px.
+// 1 rem = 10px
+
+body{
+    box-sizing: border-box;
+    padding: 3rem;
+
+    // @include respond(tab-port){
+    //     padding: 0;
+    // }
+
+
+
+
+}
+
+::selection{
+    background-color: $color-primary;
+    color: white;
+}
+

@@ -1,0 +1,152 @@
+.card{
+    perspective: 150rem; // this needs to be on the parent property, higher the px the higher the perspective
+    -moz-perspective: 150rem;
+    position:relative;
+    // When we use float, for element height collapsing we could use clearfix,
+    // but for absolute there is no thing as clearfix, hence we should have the same height;
+    height: 50rem; 
+
+
+    &__side{
+        border-radius: 5px;
+        overflow: hidden;
+        font-size: 2rem;
+        height: 50rem;
+        transition: all .8s ease;
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        backface-visibility: hidden;
+        box-shadow: 0 1.5rem 4rem rgba(black,0.2);
+        &--front{
+            background-color: white;
+        }
+    
+        &--back{
+            transform:rotateY(180deg);
+
+            &-1{
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-2{
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            &-3{
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+
+
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back{
+        transform:rotateY(0);
+    }
+
+    &__picture{
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen; // this prop works only for mozz, saf and chrome
+        -webkit-clip-path: polygon(0 0, 100% 0,100% 85%,0 100%); // prefix this so that it will work on all browsers.
+        clip-path: polygon(0 0, 100% 0,100% 85%,0 100%);
+        &--1{
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+            url(../img/nat-5.jpg);
+            
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+            url(../img/nat-6.jpg);
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+            url(../img/nat-7.jpg);
+        }
+    }
+
+    &__heading{
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        position: absolute;
+        top: 15rem;
+        right: 2rem;
+        text-align: right;
+        width: 75%;
+    }
+
+    &__heading-span{
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone; // Treats the two lines of the words, as a separate ones, by appliying padding to both.
+        &--1{
+            background-image: linear-gradient(to right bottom,
+            rgba($color-secondary-light,.85),
+            rgba($color-secondary-dark,.85));
+            color:white;
+        }
+
+        &--2{
+            background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light,.85),
+            rgba($color-primary-dark,.85));
+            color:white;
+
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom,
+            rgba($color-tertiary-light,.85),
+            rgba($color-tertiary-dark,.85));
+            color: white;
+        }
+    }
+    &__details{
+        padding: 3rem;
+        ul{
+            list-style: none;
+            width:80%;
+            margin:0 auto;
+            li{
+                text-align: center;
+                font-size: 1rem;
+                padding: 1rem;
+    
+                &:not(:last-child){
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
+    }
+    &__cta{
+        position:absolute;
+        top:60%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 75%;
+    } 
+    &__price-box{
+        text-align: center;
+        // margin-bottom: 10rem;
+        color: white;
+        font-size: 5rem;
+        font-weight: 100;
+
+    }
+    &__price-only{
+        font-size: 4rem;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 200;
+        color: #eee;
+    }
+    &__price-value{
+        text-align: center;
+    }
+
+}
+
+// Note: the clip path on chrome overrides the overflow property. 
+//We have to set it manually check the 41 lec ending. -> border-top-right:3px 
